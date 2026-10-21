@@ -5,7 +5,8 @@
   "type": "module",
   "main": "src/index.js",
   "scripts": {
-    "test": "node --test"
+    "test": "node --test",
+    "start": "node scripts/serve.js"
   },
   "engines": {
     "node": ">=20"

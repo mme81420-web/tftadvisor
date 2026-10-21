@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TFT Tracker</title>
+  <link rel="stylesheet" href="/web/style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <h1>TFT Tracker</h1>
+      <div class="header-actions">
+        <select id="strategy" aria-label="Strategy">
+          <option value="standard">Standard</option>
+          <option value="fast8">Fast 8</option>
+          <option value="reroll">Reroll</option>
+        </select>
+        <select id="carryCost" aria-label="Carry cost" hidden>
+          <option value="1">1-cost</option>
+          <option value="2">2-cost</option>
+          <option value="3">3-cost</option>
+        </select>
+        <label id="carryDoneLabel" class="check" hidden><input type="checkbox" id="carryDone"> Carries done</label>
+        <button id="newGame" class="ghost" type="button">New game</button>
+      </div>
+    </header>
+
+    <form id="state" autocomplete="off">
+      <label>Round <input id="round" value="2-1" pattern="\d-\d" required></label>
+      <label>Level <input id="level" type="number" min="1" max="10" value="3"></label>
+      <label>XP <input id="xp" type="number" min="0" value="0"></label>
+      <label>Gold <input id="gold" type="number" min="0" value="10"></label>
+      <label>HP <input id="hp" type="number" min="0" max="100" value="100"></label>
+      <label>Streak <input id="streak" type="number" value="0" title="+N win streak, -N loss streak"></label>
+    </form>
+
+    <section id="advice" aria-live="polite">
+      <div id="action" class="action"></div>
+      <div id="numbers" class="numbers"></div>
+      <ul id="reasons"></ul>
+      <p id="error" class="error" hidden></p>
+    </section>
+
+    <section class="next">
+      <span>Round result:</span>
+      <button type="button" data-result="win">Won <kbd>W</kbd></button>
+      <button type="button" data-result="loss">Lost <kbd>L</kbd></button>
+      <button type="button" data-result="">Skip <kbd>N</kbd></button>
+    </section>
+    <p class="hint">Advancing prefills next round assuming you followed the advice. Fix gold and HP if they differ.</p>
+  </main>
+  <script type="module" src="/web/app.js"></script>
+</body>
+</html>
