@@ -8,11 +8,20 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = fileURLToPath(new URL('../src/', import.meta.url));
 const PORT = Number(process.env.PORT ?? 5173);
-const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css' };
+const TYPES = {
+  '.html': 'text/html',
+  '.js': 'text/javascript',
+  '.css': 'text/css',
+  '.webmanifest': 'application/manifest+json',
+  '.png': 'image/png',
+  '.svg': 'image/svg+xml',
+};
+// The service worker has to be served from the root to control the whole app.
+const ROUTES = { '/': 'web/index.html', '/sw.js': 'web/sw.js' };
 
 createServer(async (req, res) => {
   const path = decodeURIComponent(new URL(req.url, 'http://x').pathname);
-  const file = normalize(join(ROOT, path === '/' ? 'web/index.html' : path));
+  const file = normalize(join(ROOT, ROUTES[path] ?? path));
   if (!file.startsWith(ROOT) || file.includes(`${sep}..`)) {
     res.writeHead(403).end();
     return;

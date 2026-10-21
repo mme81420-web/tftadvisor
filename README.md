@@ -14,6 +14,19 @@ fix gold and HP.
 npm start   # http://localhost:5173 (set PORT to change)
 ```
 
+### Install as an app
+
+The tracker is a Progressive Web App, so Chrome or Edge can install it with its
+own window, taskbar/Start menu icon and offline support:
+
+1. Run `npm start` and open http://localhost:5173 in Chrome or Edge.
+2. Click the install icon at the right of the address bar (or menu → *Apps* →
+   *Install TFT Tracker*).
+3. Launch it from the Start menu or pin it to the taskbar.
+
+After the first install it works offline, so you don't need `npm start` again
+unless you want to pick up code changes (run it and reopen the app once).
+
 It never reads or touches the game client. Note that Riot's TFT policy doesn't
 allow in-game advice based on your current game state, so this is for personal
 use at your own risk.
