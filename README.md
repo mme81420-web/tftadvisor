@@ -2,6 +2,22 @@
 
 A personal-use live decision advisor for Teamfight Tactics, meant to run as an overlay and give real-time play advice (level, roll, or save).
 
+## Live tracker
+
+A local web page for a second screen. Type your round, level, XP, gold, HP and
+streak, and it shows whether to level, roll or save this round. Press **W**, **L**
+or **N** (won, lost, skip) to move to the next round; it prefills next round's
+level, XP, gold and streak assuming you followed the advice, so usually you only
+fix gold and HP.
+
+```
+npm start   # http://localhost:5173 (set PORT to change)
+```
+
+It never reads or touches the game client. Note that Riot's TFT policy doesn't
+allow in-game advice based on your current game state, so this is for personal
+use at your own risk.
+
 ## Engine core
 
 Game
